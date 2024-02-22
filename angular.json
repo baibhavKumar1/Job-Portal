@@ -3,9 +3,16 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "testing": {
+    "jobportal": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -13,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/testing",
+            "outputPath": "dist/jobportal",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -25,6 +32,7 @@
               "src/assets"
             ],
             "styles": [
+              
               "src/styles.css"
             ],
             "scripts": []
@@ -57,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "testing:build:production"
+              "buildTarget": "jobportal:build:production"
             },
             "development": {
-              "buildTarget": "testing:build:development"
+              "buildTarget": "jobportal:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -68,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "testing:build"
+            "buildTarget": "jobportal:build"
           }
         },
         "test": {
@@ -76,7 +84,7 @@
           "options": {
             "polyfills": [
               "zone.js",
-              "zone.js/testing"
+              "zone.js/jobportal"
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
@@ -84,6 +92,7 @@
               "src/assets"
             ],
             "styles": [
+              
               "src/styles.css"
             ],
             "scripts": []
