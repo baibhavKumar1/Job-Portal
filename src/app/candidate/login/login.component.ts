@@ -1,37 +1,36 @@
-import { AuthService } from './../../services/auth.service';
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  loginForm:FormGroup;
-  registerForm:FormGroup
-  constructor(private authService:AuthService,private fb:FormBuilder){
-    this.loginForm = this.fb.nonNullable.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-    });
-    this.registerForm = this.fb.nonNullable.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-    });
+  data: any = {}
+  constructor(private http: HttpClient) { }
+  onFileChange(event: any) {
+    const { name, value } = event.target;
+    this.data[name] = value;
   }
-  onRegister(){
-    if (this.registerForm.valid) {
-      const { email, password } = this.registerForm.value;
-      this.authService.register(email, password);
+  sendSignInData() {
+    console.log('hi')
+    try {
+      this.http.post(`http://localhost:3000/candidate/login`, this.data)
+        .subscribe(
+          (response) => {
+            console.log('Data sent successfully:', response);
+          },
+          (error) => {
+            console.error('Error sending data:', error);
+          }
+        );
     }
-  }
-  onLogin() {
-    if (this.loginForm.valid) {
-      const { email, password } = this.loginForm.value;
-      this.authService.login(email, password);
+    //}
+    catch (err) {
+      console.log(err)
     }
   }
 }

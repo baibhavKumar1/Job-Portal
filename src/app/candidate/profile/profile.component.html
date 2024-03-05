@@ -1,5 +1,5 @@
-<div class="w-[80%] m-auto">
-    <div class="border border-red-500 bg-white m-4 p-4">
+<div class="w-[80%] m-auto flex flex-col gap-4">
+    <div class="border border-red-500 bg-white my-4 p-4">
         <p class="text-blue-500 text-3xl">Create Your Profile</p>
         <p>And apply for the best vacancies from 2000+ companies on our website</p>
         <div>
@@ -8,62 +8,72 @@
             <p>Upload CV</p>
         </div>
     </div>
-    <div class="flex">
-        <img src="../../../assets/logo.svg"/>
-        <div>
+    <div class="flex border border-red-300 items-center bg-white rounded-xl">
+        <img src="../../../assets/logo.svg" class="w-1/5" />
+        <div class="">
             <p class="text-3xl">Ann</p>
             <p>Software Developer</p>
             <p>Status</p>
-            <div>
-            <p>Add Education</p>
-            <p>Email</p>
-            <p>Website</p>
-            <p>Phone Number</p>
+            <div class="flex gap-4">
+                <p>Add Education</p>
+                <p>Email</p>
+                <p>Website</p>
+                <p>Phone Number</p>
             </div>
         </div>
     </div>
-    <div>
-        <div>
-            <p>About Me</p>
-            <button>+ Add Information</button>
+    <div class="grid grid-cols-2 grid-flow-row gap-4">
+        <div class="rounded shadow-md bg-white h-60 p-2">
+            <p class="text-2xl">About Me</p>
+            <p class="bg-rose-100 p-2 m-2 h-[60%] rounded ">No information available</p>        
+            <button mat-raised-button color="primary" class="w-max">+ Add Information</button>
         </div>
-        <div>
-            <p>My Resume</p>
-            <button>+ Add Resume</button>
+        <div class="rounded shadow-md bg-white h-60 p-2">
+            <p class="text-2xl">My Resume</p>
+            <div class="bg-rose-100 p-2 my-2 h-[60%] rounded ">
+            <p >No information available</p>     
+            </div>
+            <button mat-raised-button>+ Add Resume</button>
         </div>
-        <div>
-            <p>Experience</p>
+        <div class="rounded shadow-md bg-white h-60 p-2">
+            <p class="text-2xl">Experience</p>
+            <div class="bg-rose-100 p-2 my-2 h-[60%] rounded ">
+                Hi
+            </div>
+            <button mat-raised-button> Add Resume</button>
         </div>
-        <div>
-            <p>Latest Updates</p>
+        <div class="rounded shadow-md bg-white h-60 p-2">
+            <p class="text-2xl">Latest Updates</p>
+            <div class="bg-rose-100 p-2 my-2 h-[60%] rounded ">
+                Hi
+            </div>
         </div>
-    </div>
-    <div>
-        <div>
-        <div>
+    
+        <div class="rounded shadow-md bg-white h-60 p-2">
             <p>Skills</p>
             <button>+ Add Skill</button>
         </div>
-        <div>
+        <div class="rounded shadow-md bg-white h-60 p-2">
             <p>Education</p>
             <button>Add Education</button>
         </div>
-        </div>
-        <div>
-            <p>Best vacancies for you</p>
-            <div>
-                <img/>
-                <div>
-                    <p>Senior SEO Specialist</p>
-                    <p>Paypal</p>
-                    <div>
-                        <p>4 years</p>
-                        <p>Remote</p>
-                        <p>Full-time</p>
-                        <p>$20,000</p>
-                    </div>
+    </div>
+
+    <div class="my-2">
+        <p class="text-2xl">Best vacancies for you</p>
+        <div class="flex bg-white items-center rounded">
+            <img src="../../../assets/logo.svg" class="w-24"/>
+            <div class="p-2">
+                <p class="font-medium text-lg">Senior SEO Specialist</p>
+                <p>Paypal</p>
+                <div class="flex gap-4">
+                    <p>4 years</p>
+                    <p>Remote</p>
+                    <p>Full-time</p>
+                    <p>$20,000</p>
                 </div>
             </div>
         </div>
     </div>
+
 </div>

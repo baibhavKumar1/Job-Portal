@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CandidateService } from '../../services/candidate.service';
+import { MatButtonModule } from '@angular/material/button';
 CandidateService
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [],
+  imports: [MatButtonModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })

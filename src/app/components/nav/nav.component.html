@@ -4,15 +4,19 @@
         <p class="text-3xl text-green-800">Jobify</p>
     </div>
     <div class="flex w-2/5 justify-around font-montserrat text-lg">
-        <a routerLink="/" routerLinkActive="text-red-500">Home</a>
-        <a routerLink="/findjob" routerLinkActive="text-red-500">Find Jobs</a>
+        <a routerLink="/job" routerLinkActive="text-red-500">Find Jobs</a>
         <a routerLink="/hiretalent" routerLinkActive="text-red-500">Hire Talent</a>
-        <a routerLink="/createjob" routerLinkActive="text-red-500">Create Job</a>
+        <a routerLink="/company/create" routerLinkActive="text-red-500">Create Job</a>
         <a routerLink="/about" routerLinkActive="text-red-500">About</a>
     </div>
-    <!-- <button>Upload</button> -->
-    <div class="flex items-center gap-2" routerLink="profile">
-        <p class="text-green-800 font-medium">Sign Up</p>
+    <button mat-button [matMenuTriggerFor]="beforeMenu" class="text-green-800 font-medium "> 
         <ng-icon name="bootstrapPersonCircle" size="2em"></ng-icon>
-    </div>
+    </button> 
+    <mat-menu #beforeMenu="matMenu" xPosition="before">
+        <a  mat-menu-item routerLink="/candidate/login">Sign In</a>
+        <a mat-menu-item routerLink="/company/login">Company Sign In</a>
+        <a mat-menu-item routerLink="/candidate/register">Sign Up</a>
+        <a mat-menu-item routerLink="/company/register">Company Sign Up</a>
+        <a mat-menu-item (click)="handleLogout()">Log Out</a>
+    </mat-menu>
 </div>

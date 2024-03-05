@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+
 @Component({
   selector: 'app-candidate',
   standalone: true,
@@ -9,5 +10,5 @@ import { RouterModule } from '@angular/router';
   styleUrl: './candidate.component.css'
 })
 export class CandidateComponent {
-
+ 
 }

@@ -1,0 +1,98 @@
+<mat-stepper class="min-h-screen" [orientation]="(stepperOrientation | async)!" #stepper animationDuration="1000">
+    <mat-step [stepControl]="firstFormGroup" label="Fill out job details">
+        <form [formGroup]="firstFormGroup" class="border p-2 grid lg:grid-cols-4 gap-2 md:grid-cols-2 sm:grid-cols-1 grid-flow-row m-auto">
+            <mat-form-field class="w-max">
+                <mat-label>Job Title</mat-label>
+                <input matInput type="text" name="title" placeholder="Software Developer" formControlName="firstCtrl" (change)="dataEvent($event)" >
+            </mat-form-field>
+            <mat-form-field class="w-max"> 
+                <mat-label>Positions</mat-label>
+                <input matInput type="number" placeholder="1" formControlName="firstCtrl" name="positions" (change)="dataEvent($event)" >
+            </mat-form-field>
+            <mat-form-field class="w-max">
+                <mat-label>Salary</mat-label>
+                <input matInput type="number" placeholder="Salary per annum" formControlName="firstCtrl" name="salary" (change)="dataEvent($event)" step="1000">
+            </mat-form-field>
+            <mat-form-field class="w-max">
+                <mat-label>Situated At</mat-label>
+                <input matInput type="text" placeholder="Location" formControlName="firstCtrl" name="location" (change)="dataEvent($event)" >
+            </mat-form-field>
+            <mat-form-field class="w-max">
+                <mat-label>Job type</mat-label>
+                <input matInput placeholder="Remote/ In-Office" formControlName="firstCtrl" name="jobtype" (change)="dataEvent($event)" >
+            </mat-form-field>
+            <mat-form-field class="w-max">
+                <mat-label>Working hours (From)</mat-label>
+                <input matInput type="time" id="timeInterval" name="timeIntervalfrom" (change)="dataEvent($event)" formControlName="firstCtrl" min="00:00" max="23:59" step="300">
+            </mat-form-field>
+            <mat-form-field class="w-max">
+                <mat-label>Working hours (To)</mat-label>
+                <input matInput type="time" id="timeInterval" name="timeIntervalto" (change)="dataEvent($event)" formControlName="firstCtrl" min="00:00" max="23:59" step="300">
+            </mat-form-field>
+            <mat-form-field class="w-max">
+                <mat-label>Skills</mat-label>
+                <input matInput type="text" placeholder="As per need" formControlName="firstCtrl" name="skills" (change)="dataEvent($event)" >
+            </mat-form-field>
+            <div>
+                <button mat-raised-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="Fill out job description">
+        <form [formGroup]="secondFormGroup">
+            <mat-form-field class="w-full">
+                <mat-label>Description</mat-label>
+                <textarea matInput type="text" formControlName="secondCtrl" placeholder="This is about job" name="description" required (change)="dataEvent($event)"></textarea>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup" label="Fill out job responsibilities">
+        <form [formGroup]="thirdFormGroup">
+            <mat-form-field class="w-full">
+                <mat-label>Responsibilities</mat-label>
+                <textarea matInput type="text" formControlName="thirdCtrl" placeholder="What to do" name="responsibilities" required (change)="dataEvent($event)"></textarea>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="fourthFormGroup" label="Fill out job requirements" >
+        <form [formGroup]="fourthFormGroup">
+            <mat-form-field class="w-full">
+                <mat-label>Requirements</mat-label>
+                <textarea matInput type="text" formControlName="thirdCtrl" placeholder="What is needed" name="requirements" required (change)="dataEvent($event)"></textarea>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="fifthFormGroup" label="Fill out job perks" optional>
+        <form [formGroup]="fifthFormGroup">
+            <mat-form-field class="w-full">
+                <mat-label>Perks</mat-label>
+                <textarea matInput type="text" formControlName="thirdCtrl" placeholder="What the hire will get" name="perks" required (change)="dataEvent($event)"></textarea>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>Are you done?</p>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="submit()">Create Job</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+    </mat-step>
+</mat-stepper>

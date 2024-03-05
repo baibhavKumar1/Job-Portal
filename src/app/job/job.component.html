@@ -1,4 +1,4 @@
-<div class="bg-gray-300 space-y-2">
+<div class="space-y-2 h-screen">
     <div class=" m-2 flex gap-2 ">
         <div class=" p-2 w-1/5 bg-white h-max border space-y-2 rounded">
             <div class="flex justify-between">
@@ -7,68 +7,55 @@
             </div>
             <hr />
             <div class="space-y-4">
-                <p>Sort By</p>
-                <div class="grid grid-rows-2 grid-flow-col">
-                    <div class="flex items-center gap-2">
-                        <input type="checkbox" id="tick1" />
-                        <label for="tick1">Recently</label>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <input type="checkbox" id="tick2" />
-                        <label for="tick2">Recently</label>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <input type="checkbox" id="tick3" />
-                        <label for="tick3">Recently</label>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <input type="checkbox" id="tick4" />
-                        <label for="tick4">Recently</label>
-                    </div>
-                </div>
-                <div>
-                    <p>Salary Range</p>
-                    <mat-slider class="slider" min="0" max="1000" discrete>
-                        <input value="300" matSliderStartThumb>
-                        <input value="500" matSliderEndThumb>
-                    </mat-slider>
-                </div>
-                <p>Job Type</p>
+                <p class="font-medium">Sort By</p>
                 <div class="grid grid-cols-2 grid-flow-row">
                     <div class="flex items-center gap-2">
                         <input type="checkbox" id="tick1" />
-                        <label for="tick1">Recently</label>
+                        <label for="tick1">Salary</label>
                     </div>
+                    
                     <div class="flex items-center gap-2">
-                        <input type="checkbox" id="tick2" />
-                        <label for="tick2">Recently</label>
+                        <input type="checkbox" id="tick4" />
+                        <label for="tick4">Applications</label>
                     </div>
+                </div>
+                <!-- <div>
+                    <p>Salary Range</p>
+                    <mat-slider class="slider" min="0" max="1000" discrete>
+                        <label>0-500</label>
+                        <input value="300" matSliderStartThumb>
+                        
+                        <input value="500" matSliderEndThumb>
+                    </mat-slider>
+                </div> -->
+                <p>Job Type</p>
+                <div class="grid grid-cols-2 grid-flow-row">
                     <div class="flex items-center gap-2">
                         <input type="checkbox" id="tick3" />
-                        <label for="tick3">Recently</label>
+                        <label for="tick3">Contract</label>
                     </div>
                     <div class="flex items-center gap-2">
                         <input type="checkbox" id="tick4" />
-                        <label for="tick4">Recently</label>
+                        <label for="tick4">Part Time</label>
                     </div>
                     <div class="flex items-center gap-2">
                         <input type="checkbox" id="tick4" />
-                        <label for="tick4">Recently</label>
+                        <label for="tick4">Full Time</label>
                     </div>
                 </div>
                 <p>Work Location</p>
                 <div class="grid grid-cols-2 grid-flow-row">
                     <div class="flex items-center gap-2">
                         <input type="checkbox" id="tick1" />
-                        <label for="tick1">Recently</label>
+                        <label for="tick1">Remote</label>
                     </div>
                     <div class="flex items-center gap-2">
                         <input type="checkbox" id="tick2" />
-                        <label for="tick2">Recently</label>
+                        <label for="tick2">Hybrid</label>
                     </div>
                     <div class="flex items-center gap-2">
                         <input type="checkbox" id="tick2" />
-                        <label for="tick2">Recently</label>
+                        <label for="tick2">In-Office</label>
                     </div>
                     
                 </div>
@@ -103,68 +90,27 @@
                     <button class="bg-green-700 p-2 px-6 rounded-lg text-white">Search</button>
                 </div>
             </div>
-            <p>Showing <b class="text-green-700">1,382</b> available jobs</p>
-            <div class="w-full grid grid-cols-3 grid-row-flow gap-2 justify-between ">
-                <div class="bg-white p-2 space-y-2 rounded">
+            <p>Showing <b class="text-green-700">{{jobs?.length}}</b> available jobs</p>
+            <div class="w-full grid grid-cols-3 grid-flow-row gap-2 overflow-y-scroll">
+                <div *ngFor="let job of jobs" [routerLink]="'/job/' + job._id + '/details'" class="bg-white p-2 space-y-2 rounded">
                     <div class="flex gap-2 ">
                     <img src="../../assets/logo.svg" width="40px"/>
                     <div>
-                    <p>Product Designer</p>
-                    <p>Reddit * 134 applicants</p>
+                    <p>{{job.title}}</p>
+                    <p>{{job.company.name}} * {{job.applicants.length}} applicant</p>
                     </div>
                     </div>
-                    <div class="flex gap-1 text-xs">
-                        <p class="p-1 rounded-lg bg-blue-200 text-blue-800 w-max">ReactJS</p>
-                        <p class="p-1 rounded-lg bg-violet-200 text-violet-800 w-max">ExpressJS</p>
-                        <p class="p-1 rounded-lg bg-yellow-200 text-yellow-800 w-max">NodeJS</p>
+                    <div *ngFor="let skill of job.skills" class="flex gap-1 text-xs">
+                        <p class="p-1 rounded-lg bg-blue-200 text-blue-800 w-max">{{skill}}</p>
                     </div>
-                    <p class="text-xs">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius ducimus aliquid rem deserunt? Aut, error soluta. Magnam perspiciatis deserunt pariatur officiis quae et perferendis amet? Dolores maiores voluptatum architecto id.</p>
+                    <p class="text-xs line-clamp-3">{{job.description}}</p>
                     <hr/>
                     <div class="flex justify-between">
-                        <p>$102k/m</p>
+                        <p>{{job.salary}}k/m</p>
                         <p class="text-sm">Posted 12 days ago</p>
                     </div>
                 </div>
-                <div class="bg-white p-2 space-y-2 rounded">
-                    <div class="flex gap-2 ">
-                    <img src="../../assets/logo.svg" width="40px"/>
-                    <div>
-                    <p>Product Designer</p>
-                    <p>Reddit * 134 applicants</p>
-                    </div>
-                    </div>
-                    <div class="flex gap-1 text-xs">
-                        <p class="p-1 rounded-lg bg-blue-200 text-blue-800 w-max">ReactJS</p>
-                        <p class="p-1 rounded-lg bg-violet-200 text-violet-800 w-max">ExpressJS</p>
-                        <p class="p-1 rounded-lg bg-yellow-200 text-yellow-800 w-max">NodeJS</p>
-                    </div>
-                    <p class="text-xs">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius ducimus aliquid rem deserunt? Aut, error soluta. Magnam perspiciatis deserunt pariatur officiis quae et perferendis amet? Dolores maiores voluptatum architecto id.</p>
-                    <hr/>
-                    <div class="flex justify-between">
-                        <p>$102k/m</p>
-                        <p class="text-sm">Posted 12 days ago</p>
-                    </div>
-                </div>
-                <div class="bg-white p-2 space-y-2 rounded">
-                    <div class="flex gap-2 ">
-                    <img src="../../assets/logo.svg" width="40px"/>
-                    <div>
-                    <p>Product Designer</p>
-                    <p>Reddit * 134 applicants</p>
-                    </div>
-                    </div>
-                    <div class="flex gap-1 text-xs">
-                        <p class="p-1 rounded-lg bg-blue-200 text-blue-800 w-max">ReactJS</p>
-                        <p class="p-1 rounded-lg bg-violet-200 text-violet-800 w-max">ExpressJS</p>
-                        <p class="p-1 rounded-lg bg-yellow-200 text-yellow-800 w-max">NodeJS</p>
-                    </div>
-                    <p class="text-xs">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius ducimus aliquid rem deserunt? Aut, error soluta. Magnam perspiciatis deserunt pariatur officiis quae et perferendis amet? Dolores maiores voluptatum architecto id.</p>
-                    <hr/>
-                    <div class="flex justify-between">
-                        <p>$102k/m</p>
-                        <p class="text-sm">Posted 12 days ago</p>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
